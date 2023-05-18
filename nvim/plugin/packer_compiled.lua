@@ -138,6 +138,11 @@ _G.packer_plugins = {
     path = "/Users/bailycase/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/Users/bailycase/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/bailycase/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
@@ -215,30 +220,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: cmp-nvim-lsp
-time([[Config for cmp-nvim-lsp]], true)
-require('plugins.cmp')
-time([[Config for cmp-nvim-lsp]], false)
 -- Config for: feline.nvim
 time([[Config for feline.nvim]], true)
 require('plugins.feline')
 time([[Config for feline.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require('plugins.lsp')
-time([[Config for nvim-lspconfig]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require('plugins.null-ls')
+time([[Config for null-ls.nvim]], false)
 -- Config for: clangd_extensions.nvim
 time([[Config for clangd_extensions.nvim]], true)
 require('plugins.clangd')
 time([[Config for clangd_extensions.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require('plugins.telescope')
-time([[Config for telescope.nvim]], false)
 -- Config for: copilot-cmp
 time([[Config for copilot-cmp]], true)
 try_loadstring("\27LJ\2\ny\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\npanel\1\0\1\fenabled\1\15suggestion\1\0\0\1\0\1\fenabled\1\nsetup\16copilot_cmp\frequire\0", "config", "copilot-cmp")
 time([[Config for copilot-cmp]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require('plugins.lsp')
+time([[Config for nvim-lspconfig]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 require('plugins.gitsigns')
@@ -247,10 +248,14 @@ time([[Config for gitsigns.nvim]], false)
 time([[Config for nvim-treesitter]], true)
 require('plugins.treesitter')
 time([[Config for nvim-treesitter]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require('plugins.null-ls')
-time([[Config for null-ls.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require('plugins.telescope')
+time([[Config for telescope.nvim]], false)
+-- Config for: cmp-nvim-lsp
+time([[Config for cmp-nvim-lsp]], true)
+require('plugins.cmp')
+time([[Config for cmp-nvim-lsp]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
