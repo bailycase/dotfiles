@@ -3,8 +3,6 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
 	sources = {
-		null_ls.builtins.diagnostics.spectral,
-		null_ls.builtins.formatting.yamlfmt,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.gofmt,
 		null_ls.builtins.formatting.prettierd.with({
