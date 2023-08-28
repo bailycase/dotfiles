@@ -1,2 +1,43 @@
+
 [kubernetes]
+format = '[($context)](bold blue) in '
 disabled = false
+
+[kubernetes.context_aliases]
+'gke_.*_(?P<var_cluster>[\w-]+)' = 'gke-$var_cluster'
+
+[character] 
+success_symbol = '[➜](bold green)' 
+
+[docker_context]
+format = ''
+
+
+[git_commit]
+format = ''
+
+[git_state]
+format = ''
+
+[git_status]
+conflicted = '🏳'
+ahead = '🏎💨'
+behind = '😰'
+diverged = '😵'
+up_to_date = '✓'
+untracked = '🤷'
+stashed = ''
+modified = '📝'
+staged = '[++\($count\)](green)'
+renamed = '👅'
+deleted = '🗑'
+format = '([\[$all_status$ahead_behind\]](bold purple) )'
+
+[gcloud]
+format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+ 
+[nodejs]
+format = 'via [$version](bold green) '
+
+[package]
+format = 'is [$version](208 bold) '
