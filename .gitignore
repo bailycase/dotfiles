@@ -1,0 +1,11 @@
+*/**
+
+zsh/.zsh_sessions/*
+zsh/.zhistory
+zsh/.zsh_history
+
+!../.zshrc
+!kitty
+!nvim
+!starship.toml
+!zsh/
