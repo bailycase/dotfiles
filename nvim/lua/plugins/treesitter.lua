@@ -1,26 +1,38 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-  return
-end
-
-configs.setup({
-  ensure_installed = { "lua", "c", "typescript", "yaml", "templ" },
-  auto_install = true,
-  sync_install = false,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-})
-
-local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-
-treesitter_parser_config.templ = {
-  install_info = {
-    url = "https://github.com/vrischmann/tree-sitter-templ.git",
-    files = { "src/parser.c", "src/scanner.c" },
-    branch = "master",
-  },
+return {
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	--event = "BufReadPost",
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter-refactor",
+	},
+	opts = {
+		ensure_installed = { "lua", "typescript", "yaml", "go" },
+		highlight = {
+			enable = true,
+			disable = function(lang, buf)
+				local max_filesize = 100 * 1024 -- 100 KB
+				local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+				if ok and stats and stats.size > max_filesize then
+					return true
+				end
+			end,
+			additional_vim_regex_highlighting = false,
+		},
+		autopairs = { enable = true },
+		autotag = { enable = true },
+		indent = { enable = true },
+		sync_install = true,
+		ignore_install = {}, -- List of parsers to ignore installation
+		refactor = {
+			highlight_definitions = {
+				enable = true,
+				-- Set to false if you have an `updatetime` of ~100.
+				clear_on_cursor_move = true,
+			},
+			highlight_current_scope = { enable = false },
+		},
+	},
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
+	end,
 }
-
-vim.treesitter.language.register("templ", "templ")
