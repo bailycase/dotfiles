@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 configs.setup({
-  ensure_installed = { "lua", "c", "cpp", "typescript", "yaml", "templ" },
+  ensure_installed = { "lua", "c", "typescript", "yaml", "templ" },
   auto_install = true,
   sync_install = false,
   highlight = {

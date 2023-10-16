@@ -59,10 +59,10 @@ return require("packer").startup(function()
 		config = config("lsp"),
 	})
 
-	use({
-		"p00f/clangd_extensions.nvim",
-		config = config("clangd"),
-	})
+	--use({
+	-- "p00f/clangd_extensions.nvim",
+	--config = config("clangd"),
+	--})
 
 	use({
 		"hrsh7th/cmp-nvim-lsp",
@@ -119,7 +119,9 @@ return require("packer").startup(function()
 	use("kdheepak/lazygit.nvim")
 	use({ "karb94/neoscroll.nvim", config = config("neoscroll") })
 
-	-- use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = config("ufo-fold") })
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = config("ufo-fold") })
+
+	--use({ "andweeb/presence.nvim", config = config("presence") })
 
 	use("joerdav/templ.vim")
 end)

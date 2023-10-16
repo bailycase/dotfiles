@@ -1,3 +1,10 @@
+export PATH="/usr/local/bin:$PATH"
+export LD_LIBRARY_PATH="/opt/homebrew/opt/llvm/lib:$LD_LIBRARY_PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
+
 # Load Completions
 if type brew &>/dev/null
 then

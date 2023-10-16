@@ -1,27 +1,27 @@
+local util = require("lspconfig.util")
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
 	properties = { "documentation", "detail", "additionalTextEdits" },
 }
 
-local lspconfig = require("lspconfig")
-local configs = require("lspconfig.configs")
+local on_attach = function(client, bufnr) end
 
-if not configs.templ then
-	configs.templ = {
-		default_config = {
-			cmd = { "templ", "lsp" },
-			filetypes = { "templ" },
-			root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
-			settings = {},
-		},
-	}
-end
+local lspconfig = require("lspconfig")
 
 lspconfig.ols.setup({})
 lspconfig.zls.setup({
 	root_dir = lspconfig.util.root_pattern("zls.json", ".git"),
 })
+
+local root_files = {
+	".clangd",
+	".clang-tidy",
+	".clang-format",
+	"compile_commands.json",
+	"compile_flags.txt",
+	"configure.ac", -- AutoTools
+}
 
 lspconfig.clangd.setup({
 	on_attach = on_attach,
@@ -39,7 +39,9 @@ lspconfig.clangd.setup({
 		"--completion-style=detailed",
 	},
 	filetypes = { "c", "cpp", "objc", "objcpp" },
-	root_dir = require("lspconfig").util.root_pattern("src"),
+	root_dir = function(fname)
+		return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+	end,
 	init_option = { fallbackFlags = { "-std=c++2a" } },
 	capabilities = capabilities,
 })
@@ -62,10 +64,6 @@ lspconfig.tsserver.setup({
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
 	end,
-})
-
-lspconfig.templ.setup({
-	on_attach = on_attach,
 })
 
 require("lspconfig").lua_ls.setup({
