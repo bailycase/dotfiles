@@ -6,11 +6,12 @@ return {
     { "nvim-telescope/telescope-ui-select.nvim" },
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope-file-browser.nvim" },
-    { "kdheepak/lazygit.nvim" },
   },
   opts = function()
     local telescope = require("telescope")
     local builtin = require("telescope.builtin")
+
+    local themes = require("telescope.themes")
 
     return {
       defaults = {
@@ -19,8 +20,10 @@ return {
       pickers = {
         find_files = {
           hidden = true,
+          theme = "dropdown",
         },
         live_grep = {
+          theme = "dropdown",
           additional_args = function(opts)
             return { "--hidden" }
           end,
@@ -32,9 +35,6 @@ return {
           override_generic_sorter = true,
           override_file_sorter = true,
           case_mode = "smart_case",
-        },
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown({}),
         },
         file_browser = {
           theme = "ivy",
@@ -67,6 +67,8 @@ return {
     vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+
+    vim.keymap.set("n", "<leader>fr", builtin.lsp_references, {})
 
     telescope.setup(opts)
     telescope.load_extension("file_browser")
