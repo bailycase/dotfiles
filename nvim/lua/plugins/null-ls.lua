@@ -14,13 +14,15 @@ return {
       debug = true,
       sources = {
         formatting.gofmt,
+        formatting.pyink,
         formatting.stylua,
         formatting.clang_format,
+        formatting.rustfmt,
         formatting.prettierd.with({
           env = {
             PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/.prettierrc"),
           },
-          extra_filetypes = { "typescript" },
+          extra_filetypes = { "typescript", "svelte" },
         }),
       },
       on_attach = function(client, bufnr)
@@ -32,7 +34,7 @@ return {
             callback = function()
               -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
               -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-              vim.lsp.buf.format()
+              vim.lsp.buf.format({ async = false })
             end,
           })
         end

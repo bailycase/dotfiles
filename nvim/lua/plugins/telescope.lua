@@ -8,9 +8,6 @@ return {
     { "nvim-telescope/telescope-file-browser.nvim" },
   },
   opts = function()
-    local telescope = require("telescope")
-    local builtin = require("telescope.builtin")
-
     local themes = require("telescope.themes")
 
     return {
@@ -54,6 +51,9 @@ return {
             },
           },
         },
+        ["ui-select"] = {
+          themes.get_dropdown({}),
+        },
       },
     }
   end,
@@ -67,6 +67,7 @@ return {
     vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+    vim.keymap.set("n", "<leader>fc", vim.lsp.buf.code_action, {})
 
     vim.keymap.set("n", "<leader>fr", builtin.lsp_references, {})
 
