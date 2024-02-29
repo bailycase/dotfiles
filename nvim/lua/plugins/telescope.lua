@@ -1,8 +1,17 @@
 return {
   "nvim-telescope/telescope.nvim",
-  event = "VimEnter",
+  --event = "VimEnter",
+  cmd = "Telescope",
+  version = false,
   dependencies = {
-    { "nvim-telescope/telescope-fzf-native.nvim",  build = "make" },
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      enabled = vim.fn.executable("make") == 1,
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
     { "nvim-telescope/telescope-ui-select.nvim" },
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope-file-browser.nvim" },
@@ -10,9 +19,11 @@ return {
   opts = function()
     local themes = require("telescope.themes")
 
+    --[[
     return {
       defaults = {
         file_ignore_patterns = { "node_modules" },
+        path_display = { "smart" },
       },
       pickers = {
         find_files = {
@@ -34,28 +45,23 @@ return {
           case_mode = "smart_case",
         },
         file_browser = {
-          theme = "ivy",
-          grouped = true,
-          initial_browser = "tree",
-          auto_depth = true,
-          depth = 1,
+          --theme = "ivy",
+          -- grouped = true,
+          --initial_browser = "tree",
+          --auto_depth = true,
           path = "%:p:h",
-          -- disables netrw and use telescope-file-browser in its place
           hijack_netrw = true,
-          mappings = {
-            ["i"] = {
-              -- your custom insert mode mappings
-            },
-            ["n"] = {
-              -- your custom normal mode mappings
-            },
-          },
+        },
+        find_hidden = {
+          hidden_files = true,
         },
         ["ui-select"] = {
           themes.get_dropdown({}),
         },
       },
     }
+    --]]
+    return {}
   end,
   config = function(_, opts)
     local telescope = require("telescope")
@@ -73,7 +79,7 @@ return {
 
     telescope.setup(opts)
     telescope.load_extension("file_browser")
-    telescope.load_extension("fzf")
+    --telescope.load_extension("fzf")
     telescope.load_extension("ui-select")
   end,
 }

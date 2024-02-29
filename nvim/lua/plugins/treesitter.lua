@@ -1,7 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  --event = "BufReadPost",
+  event = "BufReadPost",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-refactor",
     "vrischmann/tree-sitter-templ",

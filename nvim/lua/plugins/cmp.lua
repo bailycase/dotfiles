@@ -1,6 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
-  event = "BufReadPre",
+  version = false,
+  event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
@@ -25,6 +26,7 @@ return {
         Copilot = "",
       },
     })
+
     vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
     local cmp = require("cmp")
@@ -39,6 +41,9 @@ return {
     end
 
     return {
+      completion = {
+        completeopt = "menu,menuone,noinsert",
+      },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -99,6 +104,7 @@ return {
       formatting = {
         format = lspkind.cmp_format({
           with_text = true,
+          maxwidth = 50,
           menu = {
             buffer = "[buf]",
             nvim_lsp = "[LSP]",
@@ -106,50 +112,20 @@ return {
             path = "[path]",
             luasnip = "[snip]",
             gh_issues = "[issues]",
-            tn = "[TabNine]",
-            eruby = "[erb]",
           },
         }),
       },
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({
+          winhighlight = "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
+        }),
       },
       experimental = {
-        native_menu = false,
         ghost_text = {
           hl_group = "LspCodeLens",
         },
       },
     }
-
-    --[[
-    -- Set configuration for specific filetype.
-    cmp.setup.filetype("gitcommit", {
-      sources = cmp.config.sources({
-        { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
-      }, {
-        { name = "buffer" },
-      }),
-    })
-
-    -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline("/", {
-      sources = {
-        { name = "buffer" },
-      },
-    })
-
-    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline(":", {
-      sources = cmp.config.sources({
-        { name = "path" },
-      }, {
-        { name = "cmdline" },
-      }),
-    })
-]]
-    --
   end,
 
   config = function(_, opts)
@@ -171,14 +147,3 @@ return {
     })
   end,
 }
-
---[[
--- Setup nvim-cmp.
-
--- Setup lspconfig.
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- require('lspconfig')['clangd'].setup {
---   capabilities = capabilities
--- }
-]]
---
