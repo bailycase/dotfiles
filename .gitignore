@@ -10,3 +10,4 @@ zsh/.zsh_history
 !starship.toml
 !zsh/
 !nvim/**
+!nix-darwin/**
