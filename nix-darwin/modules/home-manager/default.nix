@@ -7,9 +7,10 @@
     #    ./settings/neovim.nix
   ];
 
+
   home = {
     username = "bailycase";
-    #homeDirectory = "/Users/bailycase";
+    homeDirectory = "/Users/bailycase";
     packages = with pkgs; [
       neovim
       fzf
@@ -19,6 +20,7 @@
       git
       lazygit
       kitty
+      raycast
     ];
 
     sessionVariables = {
@@ -26,7 +28,10 @@
       CLICLOLOR = 1;
       EDITOR = "nvim";
     };
+
   };
+
+
 
   programs = {
     starship = {
@@ -48,7 +53,8 @@
     git.enable = true;
   };
 
+
   #home.file.".inputrc".source = ./settings/inputrc;
   # Don't change this when you change package input. Leave it alone.
-  home.stateVersion = "23.11"; # 23.11
+  home.stateVersion = "24.05"; # 23.11
 }

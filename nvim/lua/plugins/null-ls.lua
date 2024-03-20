@@ -18,6 +18,7 @@ return {
         formatting.stylua,
         formatting.clang_format,
         formatting.rustfmt,
+        formatting.nixpkgs_fmt,
         formatting.prettierd.with({
           env = {
             PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/.prettierrc"),

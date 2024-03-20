@@ -62,7 +62,14 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations."Bailys-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+        system = "aaarch64-darwin";
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config.allowUnfree = true;
+        };
+
         modules = [
+          ./modules/darwin
           configuration
           home-manager.darwinModules.home-manager
           {
