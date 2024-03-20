@@ -1,4 +1,4 @@
-#files: 1011	version: 5.9
+#files: 1041	version: 5.9
 
 _comps=(
 ''\''brew' '_brew_services'
@@ -240,6 +240,7 @@ _comps=(
 'caffeinate' '_caffeinate'
 'cal' '_cal'
 'calendar' '_calendar'
+'cargo' '_cargo'
 'cat' '_cat'
 'catchsegv' '_precommand'
 'cc' '_gcc'
@@ -339,6 +340,7 @@ _comps=(
 'cygstart.exe' '_cygstart'
 'dak' '_dak'
 'darcs' '_darcs'
+'darwin-rebuild' '_darwin-rebuild'
 'dash' '_sh'
 'date' '_date'
 'dbus-launch' '_dbus'
@@ -478,6 +480,7 @@ _comps=(
 'express' '_webbrowser'
 'extcheck' '_java'
 'extractres' '_psutils'
+'eza' '_eza'
 'fakeroot' '_fakeroot'
 'false' '_nothing'
 'fc' '_fc'
@@ -603,6 +606,11 @@ _comps=(
 'ginstall' '_install'
 'git' '_git'
 'git-buildpackage' '_git-buildpackage'
+'git-cvsserver' '_git'
+'git-receive-pack' '_git'
+'git-shell' '_git'
+'git-upload-archive' '_git'
+'git-upload-pack' '_git'
 'gitk' '_git'
 'gjoin' '_join'
 'glance' '_openstack'
@@ -829,6 +837,7 @@ _comps=(
 'killall' '_killall'
 'killall5' '_killall'
 'kioclient' '_kfmclient'
+'kitty' '_kitty'
 'kldload' '_kld'
 'kldunload' '_kld'
 'knock' '_knock'
@@ -1050,6 +1059,27 @@ _comps=(
 'ngrep' '_ngrep'
 'nice' '_nice'
 'ninja' '_ninja'
+'nix' '_nix'
+'nix-build' '_nix-build'
+'nix-channel' '_nix-channel'
+'nix-collect-garbage' '_nix-collect-garbage'
+'nix-copy-closure' '_nix-copy-closure'
+'nix-env' '_nix-env'
+'nix-hash' '_nix-hash'
+'nix-install-package' '_nix-install-package'
+'nix-instantiate' '_nix-instantiate'
+'nix-prefetch-url' '_nix-prefetch-url'
+'nix-push' '_nix-push'
+'nix-shell' '_nix-shell'
+'nix-store' '_nix-store'
+'nixops' '_nixops'
+'nixos-build-vms' '_nixos-build-vms'
+'nixos-container' '_nixos-container'
+'nixos-generate-config' '_nixos-generate-config'
+'nixos-install' '_nixos-install'
+'nixos-option' '_nixos-option'
+'nixos-rebuild' '_nixos-rebuild'
+'nixos-version' '_nixos-version'
 'nkf' '_nkf'
 'nl' '_nl'
 'nm' '_nm'
@@ -1491,6 +1521,7 @@ _comps=(
 'texindex' '_texinfo'
 'tg' '_topgit'
 'tidy' '_tidy'
+'tig' '_git'
 'time' '_precommand'
 'timeout' '_timeout'
 'times' '_nothing'
@@ -2080,7 +2111,13 @@ autoload -Uz _argocd _atlas _bat _brew _brew_services \
             _zfs_dataset _zfs_pool _zftp _zip _zle \
             _zlogin _zmodload _zmv _zoneadm _zones \
             _zparseopts _zpty _zsh _zsh-mime-handler _zsocket \
-            _zstyle _ztodo _zypper
+            _zstyle _ztodo _zypper _nix _darwin-rebuild \
+            _nix _nix-build _nix-channel _nix-collect-garbage _nix-common-options \
+            _nix-copy-closure _nix-env _nix-hash _nix-install-package _nix-instantiate \
+            _nix-prefetch-url _nix-push _nix-shell _nix-store _nixops \
+            _nixos-build-vms _nixos-container _nixos-generate-config _nixos-install _nixos-option \
+            _nixos-rebuild _nixos-version _bat _cargo _eza \
+            _fnm _kitty _starship
 autoload -Uz +X _call_program
 
 typeset -gUa _comp_assocs

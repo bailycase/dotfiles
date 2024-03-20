@@ -51,6 +51,11 @@
         nix.extraOptions = ''
           extra-platforms = x86_64-darwin aarch64-darwin
         '';
+
+        users.users.bailycase = {
+          name = "bailycase";
+          home = "/Users/bailycase";
+        };
       };
     in
     {
@@ -64,6 +69,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              #users.bailycase.home = /Users/bailycase;
               users.bailycase.imports = [
                 # NixVim module
                 #nixvim.homeManagerModules.nixvim
