@@ -2,7 +2,7 @@ require("config.lazy")
 
 vim.g.mapleader = ","
 vim.o.background = "dark"
-vim.cmd("colorscheme kanagawa-dragon")
+vim.cmd("colorscheme rose-pine")
 vim.cmd([[
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 autocmd BufWritePre <buffer> lua vim.lsp.buf.format()

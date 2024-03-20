@@ -84,7 +84,7 @@ _comps=(
 '-vared-' '_in_vared'
 '-zcalc-line-' '_zcalc_line'
 '.' '_source'
-'/opt/homebrew/Cellar/youtubedr/2.10.0/bin/youtubedr' '_youtubedr'
+'/opt/homebrew/Cellar/youtubedr/2.10.1/bin/youtubedr' '_youtubedr'
 '5g' '_go'
 '5l' '_go'
 '6g' '_go'

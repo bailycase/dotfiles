@@ -4,6 +4,7 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # Go
 export PATH=$PATH:$(go env GOPATH)/bin
+export GOPRIVATE=github.com/rain-gg
 
 export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib

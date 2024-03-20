@@ -1,17 +1,12 @@
 return {
   {
-    "rebelot/kanagawa.nvim",
+    "rose-pine/neovim",
     opts = {
-      colors = {
-        theme = {
-          all = {
-            ui = {
-              bg_gutter = "none",
-            },
-          },
-        },
-      },
+      variant = "default",
     },
+    config = function(spec, opts)
+      require("rose-pine").setup(opts)
+    end,
   },
   {
     "stevearc/dressing.nvim",
@@ -88,9 +83,7 @@ return {
       },
     },
     opts = function()
-      local colors = require("kanagawa.colors").setup()
       local location = { "location", padding = 0 }
-      local filename = { "filename", path = 4, color = { bg = colors.bg } }
 
       local function diff_source()
         local gitsigns = vim.b.gitsigns_status_dict

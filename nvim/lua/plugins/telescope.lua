@@ -24,6 +24,13 @@ return {
 				file_ignore_patterns = { "node_modules" },
 				path_display = { "smart" },
 				theme = "center",
+				sorting_strategy = "ascending",
+				layout_config = {
+					horizontal = {
+						prompt_position = "top",
+						preview_width = 0.3,
+					},
+				},
 			},
 			pickers = {
 				find_files = {
@@ -45,10 +52,8 @@ return {
 					case_mode = "smart_case",
 				},
 				file_browser = {
-					--theme = "ivy",
-					-- grouped = true,
-					--initial_browser = "tree",
-					--auto_depth = true,
+					grouped = true,
+					auto_depth = true,
 					path = "%:p:h",
 					hijack_netrw = true,
 				},
