@@ -25,6 +25,7 @@ in
       kitty
       raycast
       darwin.trash
+      docker
     ];
 
 
