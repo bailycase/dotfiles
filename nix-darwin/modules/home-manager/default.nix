@@ -1,4 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  raycast-overlay = import ./overlays/raycast.nix;
+in
+{
   # specify my home-manager configs
   imports = [
     #./settings/zsh.nix
@@ -6,7 +10,6 @@
     #./settings/tmux.nix
     #    ./settings/neovim.nix
   ];
-
 
   home = {
     username = "bailycase";
@@ -21,7 +24,9 @@
       lazygit
       kitty
       raycast
+      darwin.trash
     ];
+
 
     sessionVariables = {
       PAGER = "less";
@@ -31,8 +36,6 @@
 
   };
 
-
-
   programs = {
     starship = {
       enable = true;
@@ -41,7 +44,7 @@
 
     bat = {
       enable = true;
-      config.theme = "TwoDark";
+      #config.theme = "TwoDark";
     };
 
     fzf = {

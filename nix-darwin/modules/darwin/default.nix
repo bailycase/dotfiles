@@ -1,7 +1,5 @@
-{ pkgs, ... }: {
+{ config, lib, nixpkgs, pkgs, ... }:
+let
   users.users.bailycase.home = "/home/bailycase";
-
-  imports = [
-    ./packages/raycast.nix
-  ];
-}
+in
+{ }

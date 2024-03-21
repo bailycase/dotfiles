@@ -1,5 +1,5 @@
 {
-  description = "Example Darwin system flake";
+  description = "configuration flake for my system";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -28,7 +28,6 @@
 
         # Auto upgrade nix package and the daemon service.
         services.nix-daemon.enable = true;
-        # nix.package = pkgs.nix;
 
         # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes";
@@ -59,13 +58,14 @@
       };
     in
     {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#simple
       darwinConfigurations."Bailys-MacBook-Pro" = nix-darwin.lib.darwinSystem {
         system = "aaarch64-darwin";
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
           config.allowUnfree = true;
+          overlays = [
+            (import ./overlays/raycast.nix)
+          ];
         };
 
         modules = [
@@ -76,10 +76,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              #users.bailycase.home = /Users/bailycase;
               users.bailycase.imports = [
-                # NixVim module
-                #nixvim.homeManagerModules.nixvim
                 ./modules/home-manager
               ];
             };
@@ -87,7 +84,6 @@
         ];
       };
 
-      # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."Bailys-MacBook-Pro".pkgs;
     };
 }
